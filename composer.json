@@ -17,17 +17,20 @@
     }
   },
   "require": {
-    "php": "^7.3",
+    "php": ">=7.1",
     "ext-json": "*",
-    "ext-redis": "*",
-    "phpstan/phpstan-phpunit": "^0.12.16"
+    "ext-redis": "*"
   },
   "require-dev": {
-    "phpstan/phpstan": "^0.12.44"
+    "phpstan/phpstan": "^0.12.44",
+    "phpstan/phpstan-phpunit": "^0.12.16",
+    "phpunit/phpunit": "^9.3"
   },
   "scripts": {
     "cs": "php-cs-fixer fix --dry-run --allow-risky=yes --config=./.php_cs.dist",
     "csf": "php-cs-fixer fix --allow-risky=yes --config=./.php_cs.dist",
-    "ps": "phpstan analyse -c phpstan.neon"
+    "ps": "phpstan analyse -c phpstan.neon",
+    "tu": "phpunit --no-coverage --testdox ./tests/",
+    "tuc": "phpunit --testdox ./tests/"
   }
 }

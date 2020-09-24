@@ -30,14 +30,18 @@ class RedisClient
 
         // try to connect
         $this->client = new Redis();
-        $this->client->connect($host, $port);
+        try {
+            $this->client->connect($host, $port);
+        } catch (\RedisException $e) {
+            throw new RedisClientException($e->getMessage(), 2001);
+        }
         if (null !== $auth) {
             $this->client->auth($auth);
         }
 
         // test connection
         if (!$this->client->isConnected()) {
-            throw new RedisClientException('Connection failed', 2000);
+            throw new RedisClientException('Connection failed', 2002);
         }
     }
 
@@ -65,6 +69,7 @@ class RedisClient
 
     /**
      * set value to Redis.
+     * optional $timeout in seconds.
      *
      * @param mixed $value
      */
