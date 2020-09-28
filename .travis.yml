@@ -1,0 +1,33 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+
+before_install:
+  - phpenv config-rm xdebug.ini
+  - before_script: echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+install:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
+  - composer install
+  - ./vendor/bin/simple-phpunit install
+
+# or is it redis-server ?
+services:
+  - redis
+
+before_script:
+  - sudo redis-server /etc/redis/redis.conf --port 6379 --requirepass 'secret'
+
+script:
+  - mkdir -p build/logs
+  - composer validate --strict --no-check-lock
+  - composer run cs
+  - composer run ps
+  - composer run tu
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls

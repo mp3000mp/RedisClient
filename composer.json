@@ -1,5 +1,6 @@
 {
   "name": "mp3000mp/redis-client",
+  "license": "Apache 2.0",
   "authors": [
     {
       "name": "mp3000mp",
@@ -24,7 +25,8 @@
   "require-dev": {
     "phpstan/phpstan": "^0.12.44",
     "phpstan/phpstan-phpunit": "^0.12.16",
-    "phpunit/phpunit": "^9.3"
+    "phpunit/phpunit": "^9.3",
+    "friendsofphp/php-cs-fixer": "^2.16"
   },
   "scripts": {
     "cs": "php-cs-fixer fix --dry-run --allow-risky=yes --config=./.php_cs.dist",

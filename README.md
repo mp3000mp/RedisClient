@@ -1,11 +1,14 @@
 # RedisClient
- Simple class easy to use that wraps Redis extension.
+ Simple class easy to use that wraps Redis extension without dependencies.
+ 
+ [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
  
  Table of Contents
  -----------------
  
   - [Installation](#installation)
   - [Usage](#usage)
+  - [Use with Symfony](#symfony)
 
 
 Installation
@@ -43,5 +46,13 @@ $client->close();
 
 ```
 
+Use with Symfony
+-----
 
+Add this to services.yml
+```yml
 
+    mp3000mp\RedisClient\RedisClient:
+        arguments: ['%env(REDIS_HOST)%', '%env(REDIS_PORT)%', '%env(REDIS_AUTH)%']
+
+```
