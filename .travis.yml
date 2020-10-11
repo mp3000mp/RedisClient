@@ -16,4 +16,4 @@ script:
   - composer run tu
 
 after_success:
-  - bin/php-coveralls -v --exclude-no-stmt
+  - vendor/bin/php-coveralls -v --exclude-no-stmt
