@@ -50,8 +50,8 @@ class RedisClientTest extends TestCase
     {
         $this->client->set('key_array', ['test' => 'test']);
 
-        self::assertSame('{"test":"test"}', $this->client->get('array', false));
-        self::assertSame(['test' => 'test'], $this->client->get('array', true));
+        self::assertSame('{"test":"test"}', $this->client->get('key_array', false));
+        self::assertSame(['test' => 'test'], $this->client->get('key_array', true));
     }
 
     public function testGetSetArrayFail(): void
