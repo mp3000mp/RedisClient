@@ -3,14 +3,11 @@ language: php
 php:
   - 7.3
 
-addons:
-  mariadb: '10.4'
-
 services:
   - redis-server
 
 before_script:
-  - printf "\n" | pecl install redis
+#  - printf "\n" | pecl install redis
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script:
