@@ -15,4 +15,4 @@ script:
   - composer run tu
 
 after_success:
-  - php vendor/bin/php-coveralls -v --exclude-no-stmt -x ./ci/clover.xml --o ./ci/coveralls-upload.json
+  - php vendor/bin/php-coveralls -v --exclude-no-stmt
