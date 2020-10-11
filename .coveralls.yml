@@ -1,2 +1,2 @@
-coverage_clover: ./ci/clover.xml
-json_path: ./ci/coveralls-upload.json
+coverage_clover: ci/clover.xml
+json_path: ci/coveralls-upload.json
