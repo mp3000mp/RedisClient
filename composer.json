@@ -1,6 +1,12 @@
 {
   "name": "mp3000mp/redis-client",
+  "type": "library",
   "license": "Apache 2.0",
+  "description": "Simple class easy to use that wraps Redis extension without dependencies.",
+  "keywords": [
+    "redis"
+  ],
+  "homepage": "https://github.com/mp3000mp/RedisClient",
   "authors": [
     {
       "name": "mp3000mp",
@@ -9,24 +15,24 @@
   ],
   "autoload": {
     "psr-4": {
-      "mp3000mp\\RedisClient\\": ["src/"]
+      "mp3000mp\\RedisClient\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "mp3000mp\\RedisClient\\Tests\\": ["tests/"]
+      "mp3000mp\\RedisClient\\Tests\\": "tests/"
     }
   },
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.2",
     "ext-json": "*",
     "ext-redis": "*"
   },
   "require-dev": {
-    "phpstan/phpstan": "^0.12.44",
-    "phpstan/phpstan-phpunit": "^0.12.16",
-    "phpunit/phpunit": "^9.3",
-    "friendsofphp/php-cs-fixer": "^2.16"
+    "friendsofphp/php-cs-fixer": "^2.16",
+    "phpstan/phpstan": "^0.12.48",
+    "phpunit/phpunit": "^9.4",
+    "php-coveralls/php-coveralls": "^2.4"
   },
   "scripts": {
     "cs": "php-cs-fixer fix --dry-run --allow-risky=yes --config=./.php_cs.dist",

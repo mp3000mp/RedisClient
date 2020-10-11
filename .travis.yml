@@ -1,6 +1,7 @@
 language: php
 
 php:
+  - 7.2
   - 7.3
 
 services:
@@ -12,7 +13,8 @@ before_script:
 
 script:
   - composer install
+  - composer run cs
   - composer run tu
 
 after_success:
-  - echo "test after success"
+  - bin/php-coveralls -v --exclude-no-stmt

@@ -20,7 +20,7 @@ class RedisClientTest extends TestCase
 
     public function setUp(): void
     {
-        if(!defined('REDIS_HOST') || !defined('REDIS_PORT') || !defined('REDIS_AUTH')){
+        if (!defined('REDIS_HOST') || !defined('REDIS_PORT') || !defined('REDIS_AUTH')) {
             echo 'Missing constants REDIS_HOST, REDIS_PORT or REDIS_AUTH';
             exit();
         }
