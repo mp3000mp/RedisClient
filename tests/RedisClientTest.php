@@ -37,6 +37,7 @@ class RedisClientTest extends TestCase
         $this->expectException(RedisClientException::class);
 
         $this->client = new RedisClient('unknown');
+        $this->client->set('no_server', 'test');
     }
 
     public function testGetSetSuccess(): void

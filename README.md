@@ -25,7 +25,7 @@ Usage
 -----
 
 ```php
-// This will create window.ListFilter
+// This will try to connect and throw a RedisClientException if connection failed
 $client = new RedisClient($host, $port, $auth);
 
 // simple get set system

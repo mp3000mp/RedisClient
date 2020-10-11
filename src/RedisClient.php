@@ -16,6 +16,12 @@ class RedisClient
      */
     private $client;
 
+    private $host;
+
+    private $port;
+
+    private $auth;
+
     /**
      * RedisClient constructor.
      *
@@ -28,20 +34,33 @@ class RedisClient
             throw new RedisClientException('Redis extension missing', 1000);
         }
 
+        $this->host = $host;
+        $this->port = $port;
+        $this->auth = $auth;
+
         // try to connect
         $this->client = new Redis();
-        try {
-            $this->client->connect($host, $port);
-        } catch (\RedisException $e) {
-            throw new RedisClientException($e->getMessage(), 2001);
-        }
-        if (null !== $auth) {
-            $this->client->auth($auth);
-        }
+    }
 
-        // test connection
+    /**
+     * @throws RedisClientException
+     */
+    private function tryConnect()
+    {
         if (!$this->client->isConnected()) {
-            throw new RedisClientException('Connection failed', 2002);
+            try {
+                $this->client->connect($this->host, $this->port);
+            } catch (\RedisException $e) {
+                throw new RedisClientException($e->getMessage(), 2001);
+            }
+            if (null !== $this->auth) {
+                $this->client->auth($this->auth);
+            }
+
+            // test connection
+            if (!$this->client->isConnected()) {
+                throw new RedisClientException('Connection failed', 2002);
+            }
         }
     }
 
@@ -55,6 +74,8 @@ class RedisClient
      */
     public function get(string $key, bool $isJson = true)
     {
+        $this->tryConnect();
+
         $r = $this->client->get($key);
 
         if (false !== $r && $isJson) {
@@ -75,6 +96,8 @@ class RedisClient
      */
     public function set(string $key, $value, ?int $timeout = null): void
     {
+        $this->tryConnect();
+
         if (is_array($value)) {
             $value = json_encode($value);
         }
@@ -91,6 +114,8 @@ class RedisClient
      */
     public function getLastError(): ?string
     {
+        $this->tryConnect();
+
         return $this->client->getLastError();
     }
 
@@ -99,7 +124,9 @@ class RedisClient
      */
     public function close(): void
     {
-        $this->client->close();
+        if ($this->client->isConnected()) {
+            $this->client->close();
+        }
     }
 
     /**
@@ -107,6 +134,8 @@ class RedisClient
      */
     public function delete(string $key): void
     {
+        $this->tryConnect();
+
         $this->client->del($key);
     }
 }
