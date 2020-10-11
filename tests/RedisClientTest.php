@@ -41,8 +41,6 @@ class RedisClientTest extends TestCase
 
     public function testGetSetSuccess(): void
     {
-
-
         $this->client->set('key', 'test');
 
         self::assertSame('test', $this->client->get('key', false));
