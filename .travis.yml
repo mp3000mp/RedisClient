@@ -7,7 +7,6 @@ services:
   - redis-server
 
 before_script:
-#  - printf "\n" | pecl install redis
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script:
@@ -16,4 +15,4 @@ script:
   - composer run tu
 
 after_success:
-  - vendor/bin/php-coveralls -v --exclude-no-stmt
+  - php vendor/bin/php-coveralls -v --exclude-no-stmt -x ./ci/clover.xml --o ./ci/coveralls-upload.json
