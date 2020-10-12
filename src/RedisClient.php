@@ -16,10 +16,19 @@ class RedisClient
      */
     private $client;
 
+    /**
+     * @var string
+     */
     private $host;
 
+    /**
+     * @var int
+     */
     private $port;
 
+    /**
+     * @var string|null
+     */
     private $auth;
 
     /**
@@ -30,9 +39,11 @@ class RedisClient
     public function __construct(string $host = 'localhost', int $port = 6379, ?string $auth = null)
     {
         // test extension
+        // @codeCoverageIgnoreStart
         if (!extension_loaded('redis')) {
             throw new RedisClientException('Redis extension missing', 1000);
         }
+        // @codeCoverageIgnoreEnd
 
         $this->host = $host;
         $this->port = $port;
@@ -45,7 +56,7 @@ class RedisClient
     /**
      * @throws RedisClientException
      */
-    private function tryConnect()
+    private function tryConnect(): void
     {
         if (!$this->client->isConnected()) {
             try {
@@ -53,13 +64,8 @@ class RedisClient
             } catch (\RedisException $e) {
                 throw new RedisClientException($e->getMessage(), 2001);
             }
-            if (null !== $this->auth) {
-                $this->client->auth($this->auth);
-            }
-
-            // test connection
-            if (!$this->client->isConnected()) {
-                throw new RedisClientException('Connection failed', 2002);
+            if (null !== $this->auth && !$this->client->auth($this->auth)) {
+                throw new RedisClientException('Connection auth failed', 2002);
             }
         }
     }

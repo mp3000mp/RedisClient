@@ -12,6 +12,7 @@ before_script:
 script:
   - composer install
   - composer run cs
+  - composer run ps
   - composer run tuc
 
 after_success:
