@@ -1,9 +1,10 @@
 # RedisClient
  Simple class easy to use that wraps Redis extension without dependencies.
- 
- [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+ ![Packagist Version](https://img.shields.io/packagist/v/mp3000mp/redis-client?color=%230273b3) 
  [![Build Status](https://travis-ci.org/mp3000mp/RedisClient.svg?branch=master)](https://travis-ci.org/mp3000mp/RedisClient)
  [![Coverage Status](https://coveralls.io/repos/github/mp3000mp/RedisClient/badge.svg?branch=master)](https://coveralls.io/github/mp3000mp/RedisClient?branch=master)
+ [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
  
  Table of Contents
  -----------------
