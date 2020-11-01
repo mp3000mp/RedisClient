@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace mp3000mp\RedisClient;
+namespace Mp3000mp\RedisClient;
 
 class RedisClientException extends \Exception
 {

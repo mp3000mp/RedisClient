@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace mp3000mp\RedisClient\Tests;
+namespace Mp3000mp\RedisClient\Tests;
 
-use mp3000mp\RedisClient\RedisClient;
-use mp3000mp\RedisClient\RedisClientException;
+use Mp3000mp\RedisClient\RedisClient;
+use Mp3000mp\RedisClient\RedisClientException;
 use PHPUnit\Framework\TestCase;
 
 /**

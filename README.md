@@ -1,4 +1,5 @@
 # RedisClient
+
  Simple class easy to use that wraps Redis extension without dependencies.
 
  ![Packagist Version](https://img.shields.io/packagist/v/mp3000mp/redis-client?color=%230273b3) 
@@ -18,7 +19,7 @@ Installation
 ------------
 
 ```sh
-composer require mp3000mp/RedisClient
+composer require mp3000mp/redis-client
 ```
 
 
@@ -55,7 +56,7 @@ Use with Symfony
 Add this to services.yml
 ```yml
 
-    mp3000mp\RedisClient\RedisClient:
+    Mp3000mp\RedisClient\RedisClient:
         arguments: ['%env(REDIS_HOST)%', '%env(REDIS_PORT)%', '%env(REDIS_AUTH)%']
 
 ```

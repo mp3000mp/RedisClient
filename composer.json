@@ -1,11 +1,9 @@
 {
   "name": "mp3000mp/redis-client",
   "type": "library",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "description": "Simple class easy to use that wraps Redis extension without dependencies.",
-  "keywords": [
-    "redis"
-  ],
+  "keywords": ["redis"],
   "homepage": "https://github.com/mp3000mp/RedisClient",
   "authors": [
     {
@@ -15,12 +13,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "mp3000mp\\RedisClient\\": "src/"
+      "Mp3000mp\\RedisClient\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "mp3000mp\\RedisClient\\Tests\\": "tests/"
+      "Mp3000mp\\RedisClient\\Tests\\": "tests/"
     }
   },
   "require": {
